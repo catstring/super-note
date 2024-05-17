@@ -3,7 +3,7 @@ name: Deploy Laravel to EC2
 on:
   push:
     branches:
-      - master
+      - master  # Adjust the branch name if necessary
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Copy files to EC2
         run: |
-          scp -r -o StrictHostKeyChecking=no . ec2-user@13.211.228.65:/var/www/laravel
+          scp -r -o StrictHostKeyChecking=no ./ ec2-user@13.211.228.65:/var/www/laravel
 
       - name: Install dependencies
         run: |
