@@ -20,7 +20,7 @@ jobs:
 
       - name: Ensure target directory exists and adjust permissions
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@13.211.228.65 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ec2-user@54.253.52.106 << 'EOF'
             sudo mkdir -p /var/www/super-note
             sudo chown -R ec2-user:ec2-user /var/www/super-note
             sudo chmod -R 775 /var/www/super-note
@@ -33,14 +33,14 @@ jobs:
 
       - name: Revert ownership to nginx and adjust permissions
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@13.211.228.65 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ec2-user@54.253.52.106 << 'EOF'
             sudo chown -R nginx:nginx /var/www/super-note
             sudo chmod -R 755 /var/www/super-note
           EOF
 
       - name: Install dependencies and run artisan commands
         run: |
-          ssh -t -o StrictHostKeyChecking=no ec2-user@13.211.228.65 << 'EOF'
+          ssh -t -o StrictHostKeyChecking=no ec2-user@54.253.52.106 << 'EOF'
             sudo -u nginx bash -c "
               cd /var/www/super-note
               curl -sS https://getcomposer.org/installer | php
